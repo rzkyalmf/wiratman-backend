@@ -1,1 +1,1 @@
-npm lint:run
+npm run lint:run
