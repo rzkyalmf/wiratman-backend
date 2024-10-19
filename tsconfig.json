@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "rootDir": "./src", // sesuaikan dengan struktur proyek Anda
+    "baseUrl": "./",
+    "paths": {
+      "*": ["*", "src/*", "app/*"]
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"], // sesuaikan dengan struktur proyek Anda
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

@@ -11,7 +11,7 @@ export default [
       "simple-import-sort": simpleImportSort,
     },
     rules: {
-      "no-console": "warn",
+      // "no-console": "warn",
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
       "@typescript-eslint/no-unused-vars": [
