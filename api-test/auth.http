@@ -1,22 +1,22 @@
 @baseUrl = http://localhost:3000
 
-### GET all books
+### GET all users
 GET {{baseUrl}}/user
 
-### POST create book
+### POST create user
 POST {{baseUrl}}/user/create
 Content-Type: application/json
 
 {
   "name": "aaaaaaa",
-  "email": "12345@gmail.com",
+  "email": "alam@gmail.com",
   "password": "123123123123"
 }
 
-### GET book by email
+### GET user by email
 GET {{baseUrl}}/user/12345@gmail.com
 
-### UPDATE book
+### UPDATE user
 PATCH {{baseUrl}}/books/670f0adc6fbb5020878c685c
 Authorization: mykey
 Content-Type: application/json
@@ -26,5 +26,14 @@ Content-Type: application/json
   "authorId": "670b1e9b7386c36c8af76938"
 }
 
-### DELETE book
-DELETE {{baseUrl}}/user/delete/6713fae7f500bc6b57625aa6
+### DELETE user
+DELETE {{baseUrl}}/user/delete/671450b4bee2ea7e9caeb8bd
+
+### Login User
+POST {{baseUrl}}/user/login
+Content-Type: application/json
+
+{
+  "email": "alam@gmail.com",
+  "password": "123123123123"
+}

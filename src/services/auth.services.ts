@@ -1,10 +1,11 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import z from "zod";
 
 import { IUser } from "../models/user.model";
 import UserRepository from "../repositories/user.repository";
 
-const UserSchema = z.object({
+const CreateUserSchema = z.object({
   name: z
     .string()
     .min(3, { message: "Nama terlalu pendek" })
@@ -17,7 +18,12 @@ const UserSchema = z.object({
     .max(24, { message: "Password terlalu panjang" }),
 });
 
-const UserServices = {
+const LoginUserSchema = z.object({
+  email: z.string().email({ message: "Email tidak valid" }),
+  password: z.string(),
+});
+
+const AuthServices = {
   getAllUsers: async () => {
     return await UserRepository.getAll();
   },
@@ -27,7 +33,7 @@ const UserServices = {
   },
 
   createUser: async (userData: IUser) => {
-    const dataValidated = UserSchema.safeParse(userData);
+    const dataValidated = CreateUserSchema.safeParse(userData);
 
     if (!dataValidated.success) {
       return {
@@ -36,7 +42,9 @@ const UserServices = {
       };
     }
 
-    const existedUser = await UserRepository.getByEmail(userData.email);
+    const existedUser = await UserRepository.getByEmail(
+      dataValidated.data.email
+    );
 
     if (dataValidated.data.email === existedUser?.email) {
       return {
@@ -58,6 +66,52 @@ const UserServices = {
   deleteUser: async (id: string) => {
     return await UserRepository.delete(id);
   },
+
+  loginUser: async (data: { email: string; password: string }) => {
+    const dataValidated = LoginUserSchema.safeParse(data);
+
+    if (!dataValidated.success) {
+      return {
+        status: "error",
+        errors: dataValidated.error?.flatten().fieldErrors,
+      };
+    }
+
+    const user = await UserRepository.getByEmail(dataValidated.data.email);
+
+    if (!user) {
+      return {
+        status: "error",
+        errors: "User not found",
+      };
+    }
+
+    const isMatch = await bcrypt.compare(
+      dataValidated.data.password,
+      user.password
+    );
+
+    if (!isMatch) {
+      return {
+        status: "error",
+        errors: "Wrong password",
+      };
+    }
+
+    const payload = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
+      expiresIn: "1d",
+    });
+
+    // console.log(token);
+
+    return { user, token };
+  },
 };
 
-export default UserServices;
+export default AuthServices;
