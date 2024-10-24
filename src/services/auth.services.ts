@@ -74,6 +74,7 @@ const AuthServices = {
       return {
         status: "error",
         errors: dataValidated.error?.flatten().fieldErrors,
+        message: dataValidated.error.issues[0].message,
       };
     }
 
@@ -82,7 +83,7 @@ const AuthServices = {
     if (!user) {
       return {
         status: "error",
-        errors: "User not found",
+        message: "User not found",
       };
     }
 
@@ -94,7 +95,7 @@ const AuthServices = {
     if (!isMatch) {
       return {
         status: "error",
-        errors: "Wrong password",
+        message: "Wrong password",
       };
     }
 
@@ -111,6 +112,12 @@ const AuthServices = {
     // console.log(token);
 
     return { user, token };
+  },
+
+  protectRoute: async (token: string) => {
+    const decode = jwt.verify(token, process.env.JWT_SECRET as string);
+
+    return decode;
   },
 };
 

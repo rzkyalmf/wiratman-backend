@@ -8,7 +8,7 @@ AuthRouter.get("/", AuthController.handleGetAllUsers);
 AuthRouter.post("/create", AuthController.handleCreateUser);
 AuthRouter.get("/:email", AuthController.handleGetUserByEmail);
 AuthRouter.delete("/delete/:id", AuthController.handleDeleteUser);
-
 AuthRouter.post("/login", AuthController.handleLoginUser);
+AuthRouter.get("/protected", AuthController.handleProtectedRoute);
 
 export default AuthRouter;

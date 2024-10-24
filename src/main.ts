@@ -1,9 +1,11 @@
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import { Express } from "express";
 import mongoose from "mongoose";
 
 import AuthRouter from "./routes/auth.route";
+import AuthzRouter from "./routes/authz.route";
 
 dotenv.config();
 const app: Express = express();
@@ -18,9 +20,11 @@ mongoose
   });
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/user", AuthRouter);
+app.use("/protected", AuthzRouter);
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+app.listen(8000, () => {
+  console.log("Server running on port 8000");
 });

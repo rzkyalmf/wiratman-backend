@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:8000
 
 ### GET all users
 GET {{baseUrl}}/user
@@ -8,9 +8,9 @@ POST {{baseUrl}}/user/create
 Content-Type: application/json
 
 {
-  "name": "aaaaaaa",
-  "email": "alam@gmail.com",
-  "password": "123123123123"
+  "name": "alam",
+  "email": "alam2@gmail.com",
+  "password": "123123123"
 }
 
 ### GET user by email
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ### DELETE user
-DELETE {{baseUrl}}/user/delete/671450b4bee2ea7e9caeb8bd
+DELETE {{baseUrl}}/user/delete/6716f29b1fdbb1a4030cb25d
 
 ### Login User
 POST {{baseUrl}}/user/login
@@ -35,5 +35,8 @@ Content-Type: application/json
 
 {
   "email": "alam@gmail.com",
-  "password": "123123123123"
+  "password": "123123123"
 }
+
+### Protected Router
+GET {{baseUrl}}/protected
