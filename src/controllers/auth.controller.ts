@@ -1,15 +1,11 @@
 import { Request, Response } from "express";
-// import jwt from "jsonwebtoken";
 import { IUser } from "src/models/user.model";
 
 import AuthServices from "../services/auth.services";
 
 const AuthController = {
-  handleGetAllUsers: async (req: Request, res: Response) => {
+  handleGetAllUsers: async (_: Request, res: Response) => {
     const users = await AuthServices.getAllUsers();
-    const headers = req.headers;
-
-    console.log(headers);
 
     res.status(200).json(users);
     return;

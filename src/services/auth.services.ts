@@ -28,7 +28,7 @@ const AuthServices = {
     return await UserRepository.getAll();
   },
 
-  getByEmail: async (email: string): Promise<IUser | null> => {
+  getByEmail: async (email: string) => {
     return await UserRepository.getByEmail(email);
   },
 

@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:8000
+
+### GET all Hero
+GET {{baseUrl}}/homepage
+
+### POST create Hero
+POST {{baseUrl}}/homepage/create-hero
+Content-Type: application/json
+
+{
+  "title": "12",
+  "buttonUrl": "dwadwadwa"
+
+}
+
+### GET Hero by ID
+GET {{baseUrl}}/homepage/671e00dda6f4d80628ae87f9
+
+### UPDATE Hero
+PATCH {{baseUrl}}/homepage/update-hero/:id
+Content-Type: application/json
+
+{
+  "title": "sssssss",
+  "buttonUrl": "670b1e9b7386c36c8af76938"
+}
+
+### DELETE Hero
+DELETE {{baseUrl}}/homepage/delete-hero/671e003ab7283c57b7ce900f

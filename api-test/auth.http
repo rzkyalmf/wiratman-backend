@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
   "name": "alam",
-  "email": "alam2@gmail.com",
-  "password": "123123123"
+  "email": "alam@gmail.com",
+  "password": "123123123s"
 }
 
 ### GET user by email
@@ -34,9 +34,9 @@ POST {{baseUrl}}/user/login
 Content-Type: application/json
 
 {
-  "email": "alam@gmail.com",
+  "email": "alams@gmail.com",
   "password": "123123123"
 }
 
-### Protected Router
-GET {{baseUrl}}/protected
+### Protected Router user
+GET http://localhost:8000/user/protected
