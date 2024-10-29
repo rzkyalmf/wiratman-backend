@@ -56,7 +56,7 @@ const AuthController = {
     res
       .cookie("token", token, { httpOnly: true })
       .status(200)
-      .json({ message: "User login successfully", token });
+      .json({ message: "User login successfully", token, status: "success" });
     return;
   },
 

@@ -8,13 +8,12 @@ POST {{baseUrl}}/homepage/create-hero
 Content-Type: application/json
 
 {
-  "title": "12",
-  "buttonUrl": "dwadwadwa"
-
+  "title": "",
+  "buttonUrl": ""
 }
 
 ### GET Hero by ID
-GET {{baseUrl}}/homepage/671e00dda6f4d80628ae87f9
+GET {{baseUrl}}/homepage/671e00dda6f4d80628ae87f2
 
 ### UPDATE Hero
 PATCH {{baseUrl}}/homepage/update-hero/:id
@@ -26,4 +25,4 @@ Content-Type: application/json
 }
 
 ### DELETE Hero
-DELETE {{baseUrl}}/homepage/delete-hero/671e003ab7283c57b7ce900f
+DELETE {{baseUrl}}/homepage/delete-hero/6720939dbe1dbc3e3e7fef22

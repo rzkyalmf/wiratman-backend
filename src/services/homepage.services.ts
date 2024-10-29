@@ -53,12 +53,13 @@ const HomePageServices = {
       return {
         status: "error",
         errors: dataValidated.error?.flatten().fieldErrors,
+        message: dataValidated.error.issues[0].message,
       };
     }
 
     const newHero = await HomePageRepository.createHero(dataValidated.data);
 
-    return newHero;
+    return { newHero, dataValidated };
   },
 
   updateHero: async (id: string, heroData: Partial<IHero>) => {

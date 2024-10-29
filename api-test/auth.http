@@ -8,9 +8,9 @@ POST {{baseUrl}}/user/create
 Content-Type: application/json
 
 {
-  "name": "alam",
-  "email": "alam@gmail.com",
-  "password": "123123123s"
+  "name": "admin",
+  "email": "admin@gmail.com",
+  "password": "12345678"
 }
 
 ### GET user by email
@@ -18,7 +18,6 @@ GET {{baseUrl}}/user/12345@gmail.com
 
 ### UPDATE user
 PATCH {{baseUrl}}/books/670f0adc6fbb5020878c685c
-Authorization: mykey
 Content-Type: application/json
 
 {
@@ -27,14 +26,14 @@ Content-Type: application/json
 }
 
 ### DELETE user
-DELETE {{baseUrl}}/user/delete/6716f29b1fdbb1a4030cb25d
+DELETE {{baseUrl}}/user/delete/671ef68205fc8757a17755cf
 
 ### Login User
 POST {{baseUrl}}/user/login
 Content-Type: application/json
 
 {
-  "email": "alams@gmail.com",
+  "email": "alams",
   "password": "123123123"
 }
 
