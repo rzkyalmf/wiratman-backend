@@ -34,7 +34,7 @@ const HomePageController = {
         const heroData = req.body;
         const file = req.file;
         if (!file) {
-            res.json({ error: "Cover image is required" });
+            res.status(403).json({ message: "Cover image is required" });
             return;
         }
         heroData.image = {
@@ -44,19 +44,21 @@ const HomePageController = {
             size: file.size,
             mimetype: file.mimetype,
         };
-        const createdHero = yield homepage_services_1.default.createHero(heroData);
-        if (createdHero.errors) {
+        const data = yield homepage_services_1.default.createHero(heroData);
+        if (data.status === "error") {
             fs_1.default.unlink(file.path, () => {
                 "File not deleted";
             });
             res.status(403).json({
-                message: createdHero.errors,
+                message: data.message,
             });
             return;
         }
-        res
-            .status(201)
-            .json({ data: createdHero, message: "Hero created successfully" });
+        res.status(201).json({
+            message: "Hero created successfully",
+            // data: data.newHero,
+            status: "success",
+        });
         return;
     }),
     handleUpdateHero: (req, res) => __awaiter(void 0, void 0, void 0, function* () {

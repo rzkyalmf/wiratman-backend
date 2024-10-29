@@ -58,10 +58,11 @@ const HomePageServices = {
             return {
                 status: "error",
                 errors: (_a = dataValidated.error) === null || _a === void 0 ? void 0 : _a.flatten().fieldErrors,
+                message: dataValidated.error.issues[0].message,
             };
         }
         const newHero = yield homepage_repository_1.default.createHero(dataValidated.data);
-        return newHero;
+        return { newHero, dataValidated };
     }),
     updateHero: (id, heroData) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;

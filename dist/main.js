@@ -25,6 +25,6 @@ app.use((0, cookie_parser_1.default)());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use("/user", auth_route_1.default);
 app.use("/homepage", homepage_route_1.default);
-app.listen(8001, () => {
-    console.log("Server running on port 8001");
+app.listen(8000, () => {
+    console.log("Server running on port 8000");
 });
