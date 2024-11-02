@@ -1,10 +1,13 @@
 @baseUrl = http://localhost:8000
 
 ### GET all users
-GET {{baseUrl}}/user
+GET {{baseUrl}}/api/v1/auth/users
+
+### GET user by email
+GET {{baseUrl}}/api/v1/auth/users/:email
 
 ### POST create user
-POST {{baseUrl}}/user/create
+POST {{baseUrl}}/api/v1/auth/users
 Content-Type: application/json
 
 {
@@ -13,29 +16,17 @@ Content-Type: application/json
   "password": "12345678"
 }
 
-### GET user by email
-GET {{baseUrl}}/user/12345@gmail.com
-
-### UPDATE user
-PATCH {{baseUrl}}/books/670f0adc6fbb5020878c685c
-Content-Type: application/json
-
-{
-  "title": "sssssss",
-  "authorId": "670b1e9b7386c36c8af76938"
-}
-
 ### DELETE user
-DELETE {{baseUrl}}/user/delete/671ef68205fc8757a17755cf
+DELETE {{baseUrl}}/api/v1/auth/users/:id
 
 ### Login User
-POST {{baseUrl}}/user/login
+POST {{baseUrl}}/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "alams",
-  "password": "123123123"
+  "email": "admin@gmail.com",
+  "password": "12345678"
 }
 
 ### Protected Router user
-GET http://localhost:8000/user/protected
+GET {{baseUrl}}/api/v1/auth/me

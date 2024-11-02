@@ -1,0 +1,27 @@
+@baseUrl = http://localhost:8000
+
+### GET all Home Description
+GET {{baseUrl}}/api/v1/homepage/features
+
+### GET Home Description by ID
+GET {{baseUrl}}/api/v1/homepage/features/:id
+
+### POST create Home Description
+POST {{baseUrl}}/api/v1/homepage/features
+Content-Type: application/json
+
+{
+  "title": "dwadwadwadwa"
+}
+
+### UPDATE Home Description
+PATCH {{baseUrl}}/api/v1/homepage/features/:id
+Content-Type: application/json
+
+{
+  "title": "zzzzzzzz"
+}
+
+### DELETE Home Description
+DELETE {{baseUrl}}/api/v1/homepage/features/:id
+

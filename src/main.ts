@@ -24,8 +24,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/user", AuthRouter);
-app.use("/homepage", HomePageRouter);
+app.use("/api/v1/auth", AuthRouter);
+app.use("/api/v1/homepage", HomePageRouter);
 
 app.listen(8000, () => {
   console.log("Server running on port 8000");

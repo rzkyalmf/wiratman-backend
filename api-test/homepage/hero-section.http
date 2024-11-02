@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:8000
+
+### GET all Hero
+GET {{baseUrl}}/api/v1/homepage/hero
+
+### GET Hero by ID
+GET {{baseUrl}}/api/v1/homepage/hero/:id
+
+### POST create Hero
+POST {{baseUrl}}/api/v1/homepage/hero
+
+### UPDATE Hero
+PATCH {{baseUrl}}/api/v1/homepage/hero/:id
+
+### DELETE Hero
+DELETE {{baseUrl}}/api/v1/homepage/hero/:id
+

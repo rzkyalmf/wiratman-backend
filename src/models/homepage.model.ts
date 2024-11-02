@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 
+// Schema untuk Hero Section
 export interface IHero {
   title: string;
   buttonUrl: string;
@@ -12,7 +13,6 @@ export interface IHero {
   };
 }
 
-// Schema untuk Hero
 const HeroSchema: Schema = new Schema({
   title: { type: String, required: true },
   buttonUrl: { type: String, required: true },
@@ -27,21 +27,26 @@ const HeroSchema: Schema = new Schema({
 
 export const Hero = model<IHero>("Hero", HeroSchema);
 
-// Schema untuk About Us
-export interface IHomeAboutUs {
+// Schema untuk Home Description
+export interface IHomeDescription {
+  title: string;
   description: string;
-  feature1: string;
-  feature2: string;
-  feature3: string;
-  feature4: string;
 }
 
-const HomeAboutUs: Schema = new Schema({
+const HomeDescriptionSchema: Schema = new Schema({
+  title: { type: String, required: true },
   description: { type: String, required: true },
-  feature1: { type: String, required: true },
-  feature2: { type: String, required: true },
-  feature3: { type: String, required: true },
-  feature4: { type: String, required: true },
 });
 
-export const HomeAbout = model<IHomeAboutUs>("HomeAboutUs", HomeAboutUs);
+export const HomeDescription = model<IHomeDescription>("HomeDescription", HomeDescriptionSchema);
+
+// Schema untuk Features
+export interface IFeatures {
+  title: string;
+}
+
+const FeaturesSchema: Schema = new Schema({
+  title: { type: String, required: true },
+});
+
+export const Features = model<IFeatures>("Features", FeaturesSchema);

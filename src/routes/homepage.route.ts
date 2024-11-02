@@ -5,22 +5,25 @@ import { upload } from "../libs/upload";
 
 const HomePageRouter = express.Router();
 
-HomePageRouter.get("/", HomePageController.handleGetAllHero);
+// Hero Section
+HomePageRouter.get("/hero", HomePageController.handleGetAllHero);
+HomePageRouter.get("/hero/:id", HomePageController.handleGetHeroById);
+HomePageRouter.post("/hero", upload.single("image"), HomePageController.handleCreateHero);
+HomePageRouter.patch("/hero/:id", upload.single("image"), HomePageController.handleUpdateHero);
+HomePageRouter.delete("/hero/:id", HomePageController.handleDeleteHero);
 
-HomePageRouter.post(
-  "/create-hero",
-  upload.single("image"),
-  HomePageController.handleCreateHero
-);
+// Home Description Section
+HomePageRouter.get("/descriptions", HomePageController.handleGetAllHomeDescription);
+HomePageRouter.get("/descriptions/:id", HomePageController.handleGetHomeDescriptionById);
+HomePageRouter.post("/descriptions", HomePageController.handleCreateHomeDescription);
+HomePageRouter.patch("/descriptions/:id", HomePageController.handleUpdateHomeDescription);
+HomePageRouter.delete("/descriptions/:id", HomePageController.handleDeleteHomeDescription);
 
-HomePageRouter.patch(
-  "/update-hero/:id",
-  upload.single("image"),
-  HomePageController.handleUpdateHero
-);
-
-HomePageRouter.delete("/delete-hero/:id", HomePageController.handleDeleteHero);
-
-HomePageRouter.get("/:id", HomePageController.handleGetHeroById);
+// Features
+HomePageRouter.get("/features", HomePageController.handleGetAllFeatures);
+HomePageRouter.get("/features/:id", HomePageController.handleGetFeaturesById);
+HomePageRouter.post("/features", HomePageController.handleCreateFeatures);
+HomePageRouter.patch("/features/:id", HomePageController.handleUpdateFeatures);
+HomePageRouter.delete("/features/:id", HomePageController.handleDeleteFeatures);
 
 export default HomePageRouter;

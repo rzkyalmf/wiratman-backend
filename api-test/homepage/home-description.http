@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:8000
+
+### GET all Home Description
+GET {{baseUrl}}/api/v1/homepage/descriptions
+
+### GET Home Description by ID
+GET {{baseUrl}}/api/v1/homepage/descriptions/67236425bea9557b33601481
+
+### POST create Home Description
+POST {{baseUrl}}/api/v1/homepage/descriptions
+Content-Type: application/json
+
+{
+  "title": "alam2",
+  "description": "desk 1"
+}
+
+### UPDATE Home Description
+PATCH {{baseUrl}}/api/v1/homepage/descriptions/:id
+Content-Type: application/json
+
+{
+  "title": "dwadwa 13022222",
+  "description": "dwadwadwa"
+}
+
+### DELETE Home Description
+DELETE {{baseUrl}}/api/v1/homepage/descriptions/6723649abea9557b33601487
+
